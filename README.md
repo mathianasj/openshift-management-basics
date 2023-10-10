@@ -2,9 +2,15 @@
 This lab will walk through different ways to manage OpenShift resources.  We will walk through creating an application that is a SQL explorer for a deployed database first by CLI, then through files, then finally through some operator uses.  At the end we can tie the yaml files into helm and show how automation can work in prepration for the next series GitOps with ArgoCD.
 
 ## Prereq
-Create a new project to work in, replace mylastname with your last name
-
-    oc new-project lab-basics-mylastname
+1. Navigate to the web based development environment provided by the lab facilitator.
+1. Under the create workspace tab enter the following git repo url https://github.com/mathianasj/openshift-management-basics.git
+1. Click on "Create & Open" button
+1. You will be presented with a starting workspace openshift-management-basics screen, eventualy the web based vs code will open
+1. You will have to click yes trust button
+1. Click on the three lines in the top left -> terminal -> new terminal, at the bottom of the screen you will get a command prompt
+1. Create a new project to work in
+    
+    ```oc new-project lab-basics-$(oc whoami)```
 
 ## Manual CLI Creation
 The OpenShift CLI has a concept of creating new applications using input parameters to generate the resources.
