@@ -1,6 +1,11 @@
 # OpenShift Management Basics
 This lab will walk through different ways to manage OpenShift resources.  We will walk through creating an application that is a SQL explorer for a deployed database first by CLI, then through files, then finally through some operator uses.  At the end we can tie the yaml files into helm and show how automation can work in prepration for the next series GitOps with ArgoCD.
 
+## Prereq
+Create a new project to work in, replace mylastname with your last name
+
+    oc new-project lab-basics-mylastname
+
 ## Manual CLI Creation
 The OpenShift CLI has a concept of creating new applications using input parameters to generate the resources.
 
@@ -13,7 +18,7 @@ The first time we will run through this exercise and not create a database serve
 This is a web base sql explorer we will use to create tables, add data, and query the tables.
 1. Create the deployment for the sqlpad 
     
-    `oc new-app --image=quay.io/kahlai/sqlpad:6.11.3`
+    `oc new-app -e SQLPAD_PORT=3000 -e SQLPAD_ADMIN=admin@example.com -e SQLPAD_ADMIN_PASSWORD=secret --image=quay.io/kahlai/sqlpad:6.11.3`
 1. Expose the newly deployed application as a route so we can access the app.
 
     `oc create route edge --service=sqlpad`

@@ -2,7 +2,6 @@ kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
   name: mariadb
-  namespace: lab-prep
   labels:
     app: mariadb-ephemeral
 spec:
