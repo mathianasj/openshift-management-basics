@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb-ephemeral
+    app.kubernetes.io/component: mariadb-ephemeral
+    app.kubernetes.io/instance: mariadb-ephemeral
+    app.openshift.io/runtime: mariadb
+spec:
+  ports:
+    - name: mariadb
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
+  selector:
+    name: mariadb
